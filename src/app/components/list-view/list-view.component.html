@@ -1,0 +1,40 @@
+<ul *ngIf="categories">
+    <ng-template ngFor let-item [ngForOf]="categories"  >
+      <li *ngIf="item.name.length > 3" >{{item.id}} - {{ item.name }} : {{item.description}}</li>
+      <ng-container *ngIf="!changeForm;">
+        <button (click)="changeFormFunc(item.id);">Update</button>
+      </ng-container>
+    </ng-template>
+  </ul>
+
+<!--Reactive Form-->
+<ng-container *ngIf="changeForm; else elseTitle">
+  <h1>Form - Update - {{this.categoryIdToUpdate}}</h1>
+</ng-container>
+
+<ng-template #elseTitle>
+  <h1>Form - Add</h1>
+</ng-template>
+
+<form [formGroup]="categoryAddForm" >
+  <p>{{error}}</p>
+  <input formControlName="name" type="text" placeholder="Enter name"><br>
+  <input formControlName="description" type="text" placeholder="Enter description"><br>
+  <ng-container *ngIf="changeForm; else elseButton">
+    <button (click)="update()">Update</button>
+    <button (click)="changeFormFunc(0)">Cancel</button>
+  </ng-container>
+  
+  <ng-template #elseButton>
+    <button (click)="add()">Add</button>
+  </ng-template>
+</form>
+
+
+
+<!-- ngModel From-->
+<h1>Sil: {{categoryIdToDelete}}</h1>
+<div>
+  <input type="text" placeholder="id" [(ngModel)]="categoryIdToDelete">
+  <button (click)="delete()">Sil</button>
+</div>
