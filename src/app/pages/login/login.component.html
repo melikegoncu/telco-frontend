@@ -1,1 +1,23 @@
-<p>login works!</p>
+<p>Login</p>
+<body class="login">
+		<div id="login">
+		<form [formGroup]="loginForm">
+			<div>
+				<label for="user_login">Username</label>
+                <div>
+				<input type="text" formControlName="userName" name="log" id="user_login" class="input" value="" size="20" autocapitalize="off" autocomplete="username">
+                </div>
+            </div>
+
+			<div class="user-pass-wrap">
+				<label for="user_pass">Password</label>
+				<div class="wp-pwd">
+					<input type="password" formControlName="password" name="pwd" id="user_pass" class="input password-input" value="" size="20" autocomplete="current-password">
+				</div>
+			</div>
+			<p class="submit">
+				<input (click)="login()" type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In">
+			</p>
+		</form>
+		</div>
+</body>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from './services/loading.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit{
   isLoading: boolean=false;
   today: Date =new Date();
 
-  constructor(private loadingService: LoadingService){
+  constructor(private loadingService: LoadingService, private localStoreService: LocalStorageService){
 
   }
   ngOnInit(): void {
