@@ -21,9 +21,10 @@ export class TokenInterceptor implements HttpInterceptor {
       let newRequest = request;
       if (token!=null) {
         newRequest = request.clone({
-        headers: request.headers.set("Authorization","Bearer " + token)
+        // headers: request.headers.set("Authorization","Bearer " + token)
+        setHeaders : {"Authorization": `Bearer ${token}`}
       })
-      console.log('bu çalıştı');
+      console.log(JSON.stringify(newRequest.headers));
       }else{
         console.log('bu çalışmıyo');
       }
