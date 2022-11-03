@@ -6,21 +6,28 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private localStorageService:LocalStorageService) {}
 
   intercept(
     request: HttpRequest<unknown>, 
     next: HttpHandler): 
     Observable<HttpEvent<unknown>> {
-    return next.handle(request);
-  }
-
-  // public getData(key: string) {
-  //   let data = localStorage.getItem(key)|| "";
-  //   return data;
-  // }
+      let token = this.localStorageService.getData("token");
+      let newRequest = request;
+      if (token!=null) {
+        newRequest = request.clone({
+        headers: request.headers.set("Authorization","Bearer " + token)
+      })
+      console.log('bu çalıştı');
+      }else{
+        console.log('bu çalışmıyo');
+      }
+      
+      return next.handle(newRequest);
+    }
 }

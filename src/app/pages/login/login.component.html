@@ -1,23 +1,20 @@
-<p>Login</p>
-<body class="login">
-		<div id="login">
-		<form [formGroup]="loginForm">
-			<div>
-				<label for="user_login">Username</label>
-                <div>
-				<input type="text" formControlName="userName" name="log" id="user_login" class="input" value="" size="20" autocapitalize="off" autocomplete="username">
-                </div>
-            </div>
+<body class="text-center">
+    
+<main class="form-signin w-100 m-auto">
+  <form  [formGroup]="loginForm">
+    <img class="mb-4" src="assets/etiya_logo.png" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-			<div class="user-pass-wrap">
-				<label for="user_pass">Password</label>
-				<div class="wp-pwd">
-					<input type="password" formControlName="password" name="pwd" id="user_pass" class="input password-input" value="" size="20" autocomplete="current-password">
-				</div>
-			</div>
-			<p class="submit">
-				<input (click)="login()" type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In">
-			</p>
-		</form>
-		</div>
+    <div class="form-floating">
+      <input formControlName="userName" type="name" class="form-control" id="floatingInput" placeholder="isim soyisim">
+      <label for="floatingInput">User Name</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <button (click)="login()" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+  </form>
+</main>
 </body>

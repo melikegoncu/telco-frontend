@@ -30,8 +30,7 @@ export class HomepageComponent implements OnInit {
   }
   createServicesAddForm() {
     this.serviceAddForm = this.formBuilder.group({
-      name: ['',Validators.required],
-      description:''
+      name: ['',Validators.required]
     })
   }
 

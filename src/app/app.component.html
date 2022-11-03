@@ -3,13 +3,6 @@
 
 <!-- <h3>{{today | date:'dd-MM-YYYY'}}</h3> -->
 
-<div class="spinner-container" *ngIf="isLoading">
-    <div class="overlay show"></div>
-    <div class="spinner show">
-      <div class="loader"></div>
-      <p>Loading...</p>
-    </div>
-</div>
 
 <!-- <ul>
   <li *ngFor="let i of 10 | createFakeArray">{{i}}</li>
@@ -20,4 +13,7 @@
 </ul> -->
 
 <!-- <app-list-view></app-list-view> -->
+<app-navbar></app-navbar>
+<app-loading-overlay></app-loading-overlay>
 <router-outlet></router-outlet>
+<app-footer></app-footer>

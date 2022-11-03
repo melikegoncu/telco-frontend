@@ -11,6 +11,10 @@ import { CreateFakeArrayPipe } from './pipes/create-fake-array.pipe';
 import { SplitPipe } from './pipes/split.pipe';
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     CreateFakeArrayPipe,
     SplitPipe,
     LoginComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoadingOverlayComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   
   imports: [
@@ -31,7 +38,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
   ],
 
   // Injectable classlarımı providers 'ta tanımlarım
-  providers: [{provide: HTTP_INTERCEPTORS,useClass:LoadingInterceptor,multi:true}],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass:LoadingInterceptor,multi:true},{provide: HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

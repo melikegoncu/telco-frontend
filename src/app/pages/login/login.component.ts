@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
       this.loginServiceService.add(loginModel).subscribe({
         next:(response) => {
           //this.localStorageService.saveData(response);
-          console.log(JSON.stringify(response).split('"')[5]);
           this.localStorageService.saveData("token",JSON.stringify(JSON.stringify(response).split('"')[5]));
           this.router.navigateByUrl("/services");
         },
