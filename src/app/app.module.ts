@@ -15,6 +15,9 @@ import { LoadingOverlayComponent } from './components/loading-overlay/loading-ov
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { JwtModule } from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     HomepageComponent,
     LoadingOverlayComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   
   imports: [
@@ -34,7 +37,14 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AppRoutingModule,
     HttpClientModule,//ekledik
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {return localStorage.getItem('token');}
+      },
+    })
   ],
 
   // Injectable classlarımı providers 'ta tanımlarım

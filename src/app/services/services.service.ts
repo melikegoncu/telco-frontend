@@ -7,7 +7,7 @@ import { Services } from '../model/services';
 @Injectable({
   providedIn: 'root'
 })
-export class ServingServicesService {
+export class ServicesService {
 
   controllerUrl = `${environment.apiUrl}/services`;
 

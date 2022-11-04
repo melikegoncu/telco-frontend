@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoriesService {
   // private httpClient:HttpClient;
-  controllerUrl = `${environment.apiUrl}/categories`;
+  private controllerUrl = `${environment.apiUrl}/categories`;
 
   constructor(private httpClient:HttpClient) {
     // this.httpClient=httpClient;

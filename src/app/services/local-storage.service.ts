@@ -11,8 +11,12 @@ export class LocalStorageService {
     localStorage.setItem(key, value);
   }
 
-  public getData(key: string):string{
-    let value= localStorage.getItem(key)!;
+  public getData(key: string):string|null{
+    let value= localStorage.getItem(key);
     return value;
+  }
+
+  public removeData(key:string){
+    localStorage.removeItem(key);
   }
 }

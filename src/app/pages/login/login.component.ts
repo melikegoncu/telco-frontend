@@ -1,9 +1,11 @@
+import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginModel } from 'src/app/model/loginModel';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { LoginServiceService } from 'src/app/services/login-service.service';
+import { LoginServiceService } from 'src/app/services/login.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -13,7 +15,11 @@ export class LoginComponent implements OnInit {
 
   loginForm !: FormGroup;
   error: string='';
-  constructor(private router:Router,private formBuilder:FormBuilder, private loginServiceService:LoginServiceService, private localStorageService:LocalStorageService) { }
+  constructor(private router:Router,
+    private formBuilder:FormBuilder, 
+    private loginServiceService:LoginServiceService, 
+    private localStorageService:LocalStorageService, 
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -33,14 +39,14 @@ export class LoginComponent implements OnInit {
       const loginModel : LoginModel={
         ...this.loginForm.value
       };
-      this.loginServiceService.add(loginModel).subscribe({
+      this.loginServiceService.login(loginModel).subscribe({
         next:(response) => {
-          //this.localStorageService.saveData(response);
-          this.localStorageService.saveData("token",JSON.stringify(JSON.stringify(response).split('"')[5]));
+          //this.localStorageService.saveData(response);,JSON.stringify(JSON.stringify(response).split('"')[5])
+          this.localStorageService.saveData("token",response.access_token);
           this.router.navigateByUrl("/services");
         },
         error: (err) =>{
-          console.log(err);
+          this.toastr.error(err['message']);
           this.error= err.statusText;
         },
         complete:() =>{
@@ -49,6 +55,9 @@ export class LoginComponent implements OnInit {
           // this.getCategories();
         },
       })
+    }
+    else{
+      this.toastr.error("Please fill the form correctly");
     }
   }
 

@@ -12,7 +12,7 @@ import { LoadingService } from '../services/loading.service';
 export class LoadingInterceptor implements HttpInterceptor {
 
 
-  constructor(private loadingService: LoadingService) {}
+  constructor(private loadingService: LoadingService,) {}
 
   intercept(
     request: HttpRequest<unknown>,// o anda giden isteğin instance ını tutan alan
@@ -24,7 +24,7 @@ export class LoadingInterceptor implements HttpInterceptor {
       finalize(() => {
         setTimeout(() => {
           this.loadingService.stopLoading();
-        }, 3000);
+        });
       })
     );
   }

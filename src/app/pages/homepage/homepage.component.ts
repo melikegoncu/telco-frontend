@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Services } from 'src/app/model/services';
-import { ServingServicesService } from 'src/app/services/serving-services.service';
+import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
   templateUrl: './homepage.component.html',
@@ -21,7 +21,7 @@ export class HomepageComponent implements OnInit {
 
   changeForm: boolean= false;
 
-  constructor(private servicesService:ServingServicesService, private formBuilder: FormBuilder) { 
+  constructor(private servicesService:ServicesService, private formBuilder: FormBuilder) { 
   }
 
   ngOnInit(): void {
