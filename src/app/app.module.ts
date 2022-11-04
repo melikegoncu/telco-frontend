@@ -18,6 +18,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from "@auth0/angular-jwt";
+import { CustomerComponent } from './pages/customer/customer.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { JwtModule } from "@auth0/angular-jwt";
     LoadingOverlayComponent,
     NavbarComponent,
     FooterComponent,
+    CustomerComponent,
+    FilterPipe,
   ],
   
   imports: [

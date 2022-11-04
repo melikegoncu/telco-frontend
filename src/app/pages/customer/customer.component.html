@@ -1,0 +1,12 @@
+<ul class="list-group">
+    <ng-template ngFor let-item [ngForOf]="individualCustomers"  >
+      <li class="list-group-item">
+      {{item.customerId}} - {{ item.firstName }} {{item.lastName}}</li>
+      <button >Detay</button>
+    </ng-template>
+    <ng-template ngFor let-item [ngForOf]="corporateCustomers"  >
+      <li class="list-group-item">
+      {{ item.customerId }} - {{ item.companyName}}</li>
+      <button >Detay</button>
+    </ng-template>
+  </ul>
