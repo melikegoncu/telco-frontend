@@ -19,4 +19,8 @@ export class CorporateCustomerService {
     //get metodu Get Http istediğini hazırlıyor.
     return this.httpClient.get<CorporateCustomer[]>(this.controllerUrl);
   }
+
+  getByIdCorporateCustomer(customerId: number): Observable<CorporateCustomer[]> {
+    return this.httpClient.get<CorporateCustomer[]>(`${this.controllerUrl}?customerId=${customerId}`);
+  }
 }

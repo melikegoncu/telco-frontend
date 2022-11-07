@@ -20,6 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from "@auth0/angular-jwt";
 import { CustomerComponent } from './pages/customer/customer.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { CustomerDetailComponent } from './pages/customer-detail/customer-detail.component';
+import { CreateCustomerComponent } from './pages/create-customer/create-customer.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     FooterComponent,
     CustomerComponent,
     FilterPipe,
+    CustomerDetailComponent,
+    CreateCustomerComponent,
   ],
   
   imports: [

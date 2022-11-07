@@ -1,12 +1,30 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+  <title>Bootstrap Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="p-3 m-0 border-0 bd-example">
+  <div>
+  <h4>Search  <input [(ngModel)]="searchText" type="text" placeholder="Search Name"></h4>
+  </div>
 <ul class="list-group">
-    <ng-template ngFor let-item [ngForOf]="individualCustomers"  >
+    <ng-template ngFor let-item [ngForOf]="individualCustomers | filter:searchText "  >
       <li class="list-group-item">
       {{item.customerId}} - {{ item.firstName }} {{item.lastName}}</li>
-      <button >Detay</button>
+      <button type="button" class="btn btn-outline-info btn-sm" [routerLink]="'/customerDetail/' + item.customerId">Detay </button>
     </ng-template>
-    <ng-template ngFor let-item [ngForOf]="corporateCustomers"  >
+    <ng-template ngFor let-item [ngForOf]="corporateCustomers  | filter:searchText "  >
       <li class="list-group-item">
       {{ item.customerId }} - {{ item.companyName}}</li>
-      <button >Detay</button>
+      <button type="button" class="btn btn-outline-info btn-sm" [routerLink]="'/customerDetail/' + item.customerId">Detay </button>
     </ng-template>
   </ul>
+
+  <div>
+    <button routerLink="/createCustomer" class="btn btn-success btn-sm" type="button">Add</button>
+  </div>
+</body>

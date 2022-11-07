@@ -17,4 +17,8 @@ export class IndividualCustomerService {
   getIndvCustomer(): Observable<IndividualCustomer[]> {
     return this.httpClient.get<IndividualCustomer[]>(this.controllerUrl);
   }
+
+  getByIdIndvCustomer(customerId: number): Observable<IndividualCustomer[]> {
+    return this.httpClient.get<IndividualCustomer[]>(`${this.controllerUrl}?customerId=${customerId}`);
+  }
 }

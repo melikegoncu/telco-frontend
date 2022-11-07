@@ -9,9 +9,21 @@ import { CorporateCustomer } from 'src/app/model/corporateCustomer';
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-  transform(value: any, ...args: any[]) {
-    throw new Error('Method not implemented.');
+  transform(items: any[], searchText: any): any[] {
+    if (items && searchText) {
+      return items.filter(item => {
+        let s = '';
+        Object.getOwnPropertyNames(item).forEach((i) => {
+          s += item[i];
+        });
+        return s.toLowerCase().includes(searchText.toLowerCase());
+      });
+    }
+    return items;
   }
+
+  // return value.filter((individualCustomer) =>
+      // individualCustomer.firstName.toLocaleLowerCase().includes(firstName.toLocaleLowerCase())
   // transform(value: IndividualCustomer[]| CorporateCustomer[], filterText: string):IndividualCustomer[] | CorporateCustomer[] {
   //   {
   //     filterText = filterText?filterText.toLocaleLowerCase():"";

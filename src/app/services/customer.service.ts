@@ -19,4 +19,8 @@ export class CustomerService {
       //get metodu Get Http istediğini hazırlıyor.
       return this.httpClient.get<Customer[]>(this.controllerUrl);
     }
+
+    getByIdCustomer(id: number): Observable<void> {
+      return this.httpClient.get<void>(`${this.controllerUrl}?id${id}`);
+    }
 }

@@ -10,12 +10,12 @@
 
 <ul class="list-group" *ngIf="services">
   <ng-template ngFor let-item [ngForOf]="services"  >
-    <li class="list-group-item"><button
+    <li class="list-group-item">
+    {{item.id}} - {{ item.name }} </li>
+    <ng-container *ngIf="!changeForm;"><button
       (click)="changeFormFunc(item.id);"
       type="button"
       class="btn btn-outline-info btn-sm">Update</button>
-    {{item.id}} - {{ item.name }} </li>
-    <ng-container *ngIf="!changeForm;">
       <!-- <button (click)="changeFormFunc(item.id);">Update</button> -->
     </ng-container>
   </ng-template>
@@ -32,7 +32,7 @@
 
 <form [formGroup]="serviceAddForm" >
   <p>{{error}}</p>
-  <input size="15" formControlName="name" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons">
+  <input size="15" formControlName="name" type="text" class="form-control" aria-label="Recipient's username with two button addons">
 </form>
 
 <div class="input-group">
@@ -55,4 +55,6 @@
   <button (click)="delete()" class="btn btn-danger btn-sm" type="button">Sil</button>
 
 </div>
+
+</body>
 

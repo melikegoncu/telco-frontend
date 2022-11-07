@@ -14,6 +14,8 @@ export class CustomerComponent implements OnInit {
   customers !: Customer[];
   individualCustomers !: IndividualCustomer[];
   corporateCustomers !: CorporateCustomer[];
+  searchText!: string;
+
 
   constructor(private customerService:CustomerService, private individualService: IndividualCustomerService,
      private corporateService: CorporateCustomerService) { 
@@ -42,5 +44,7 @@ export class CustomerComponent implements OnInit {
     this.corporateCustomers = response;
     });
   }
+
+  
   
 }
