@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
+import { IndividualCustomer } from '../model/individualCustomer';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IndividualCustomer } from '../model/individualCustomer';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,9 @@ export class IndividualCustomerService {
 
   getByIdIndvCustomer(customerId: number): Observable<IndividualCustomer[]> {
     return this.httpClient.get<IndividualCustomer[]>(`${this.controllerUrl}?customerId=${customerId}`);
+  }
+
+  add(indivCustomer : IndividualCustomer): Observable<IndividualCustomer> {
+    return this.httpClient.post<IndividualCustomer>(this.controllerUrl, indivCustomer);
   }
 }

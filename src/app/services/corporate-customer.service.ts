@@ -1,8 +1,8 @@
+import { CorporateCustomer } from '../model/corporateCustomer';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CorporateCustomer } from '../model/corporateCustomer';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,9 @@ export class CorporateCustomerService {
 
   getByIdCorporateCustomer(customerId: number): Observable<CorporateCustomer[]> {
     return this.httpClient.get<CorporateCustomer[]>(`${this.controllerUrl}?customerId=${customerId}`);
+  }
+
+  add(corpoCustomer: CorporateCustomer): Observable<CorporateCustomer> {
+    return this.httpClient.post<CorporateCustomer>(this.controllerUrl, corpoCustomer);
   }
 }
