@@ -16,24 +16,46 @@
 
 import { CustomerToRegisterState, initialCustomerToRegisterState } from "./customerToRegister.state";
 import { createReducer, on } from "@ngrx/store";
-
-import { setCustomerToRegister } from "./customerToRegister.actions";
+import { setCorpoCustomerToRegister, setCustomerToRegister, setIndivCustomerToRegister } from "./customerToRegister.actions";
 
 export const customerToRegisterReducer = createReducer<CustomerToRegisterState>(
     initialCustomerToRegisterState,
     on(
         setCustomerToRegister, //: yakalamak istediğim action
       (currentState, action) => {
+        console.log(action)
         //: yakaladığım action ile ne yapacağımı belirliyorum. store'taki ilgili state'i güncelliyorum
         //: store'daki state'i güncellemek için referansının değişmesi gerekir.
         //! currentState.tokenUserModel = action.tokenUserModel;
         //: Çünkü componentler state'lerin stack adreslerini izliyorlar. Referans değişmediği sürece, componentler state'i günellenmiş olarak görmeyecektir.
         return {
           ...currentState,
-          customerToRegister: action.customerToRegister,
+          customerToRegister: action.customerModel,
         };
       }
     ),
+
+    on(
+      setIndivCustomerToRegister, 
+    (currentState, action) => {
+      console.log(action)
+      return {
+        ...currentState,
+        IndividualCustomerToRegister: action.individualCustomerModel,
+      };
+    }
+  ),
+
+  on(
+    setCorpoCustomerToRegister, 
+  (currentState, action) => {
+    console.log(action)
+    return {
+      ...currentState,
+      CorporateCustomerToRegister: action.corporateCustomerModel,
+    };
+  }
+),
     
     // on(deleteTokenUserModel, (currentState) => {
     //   return {

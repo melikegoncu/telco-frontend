@@ -21,9 +21,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { SplitPipe } from './pipes/split.pipe';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './interceptors/token.interceptor';
-import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,9 @@ import { StoreModule } from '@ngrx/store';
       },
     }),
     StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({
+      autoPause: false,
+    }),
   ],
 
   // Injectable classlarımı providers 'ta tanımlarım
