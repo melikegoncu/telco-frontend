@@ -91,7 +91,6 @@ export class CreateCustomerComponent implements OnInit {
     //   this.customers = response;
     // }); 
 
-
     const registeredCustomer : Customer={
       id:null,
       customerNumber: Math.floor(10000000 + Math.random() * 99999999)
@@ -118,7 +117,7 @@ export class CreateCustomerComponent implements OnInit {
     const responseCustomer=this.addCustomer();
 
     this.store.dispatch(
-      setCustomerToRegister({ customerModel: this.createIndividualCustomer.value })
+      setIndivCustomerToRegister({ individualCustomerModel: this.createIndividualCustomer.value })
     );
     
     // const registeredIndividual : IndividualCustomer={
@@ -151,7 +150,7 @@ export class CreateCustomerComponent implements OnInit {
     const responseCustomer=this.addCustomer();
 
     this.store.dispatch(
-      setCustomerToRegister({ customerModel: this.createIndividualCustomer.value })
+      setCorpoCustomerToRegister({ corporateCustomerModel: this.createIndividualCustomer.value })
     );
   //   const response = this.corporateService.add(this.corporateCustomers).subscribe((response) => { 
   //     this.corporateCustomers = response;
