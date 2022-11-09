@@ -3,8 +3,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AssignCatalogComponent } from './pages/assign-catalog/assign-catalog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { CreateCustomerComponent } from './pages/create-customer/create-customer.component';
 import { CreateFakeArrayPipe } from './pipes/create-fake-array.pipe';
 import { CustomerComponent } from './pages/customer/customer.component';
@@ -25,6 +27,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { SummaryComponent } from './pages/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +44,13 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     FilterPipe,
     CustomerDetailComponent,
     CreateCustomerComponent,
+    AssignCatalogComponent,
+    SummaryComponent
   ],
   
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,//ekledik
     FormsModule,

@@ -1,12 +1,7 @@
+<ul *ngIf="catalog">
+    <ng-template ngFor let-item [ngForOf]="catalog"  >
+      <li >{{item.id}} - {{ item.name }} : {{item.price}}</li>   
+        <button class="btn btn-outline-info btn-sm" (click)="selectCatalog(item)" >Add This Catalog</button>
+    </ng-template>
+  </ul>
 
-    <!-- <ul class="list-group" *ngIf="catalog"> -->
-      <ng-template ngFor let-item [ngForOf]="catalog"  >
-        <li class="list-group-item">
-         {{ item.name }} - {{item.price}} </li>
-        <button
-          (click)="checkboxForm()"
-          type="button"
-          class="btn btn-outline-info btn-sm">Ekle</button>
-          <!-- <button (click)="changeFormFunc(item.id);">Update</button> -->
-      </ng-template>
-    <!-- </ul> -->
