@@ -93,7 +93,7 @@ export class CreateCustomerComponent implements OnInit {
 
     const registeredCustomer : Customer={
       id:null,
-      customerNumber: Math.floor(10000000 + Math.random() * 99999999)
+      customerNumber: Math.floor((Math.random() * 99999999) + 10000000),
       // ...this.createIndividualCustomer.value
     };
 

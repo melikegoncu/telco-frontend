@@ -16,7 +16,7 @@
 
 import { CustomerToRegisterState, initialCustomerToRegisterState } from "./customerToRegister.state";
 import { createReducer, on } from "@ngrx/store";
-import { setCorpoCustomerToRegister, setCustomerToRegister, setIndivCustomerToRegister } from "./customerToRegister.actions";
+import { setCatalogToRegister, setCorpoCustomerToRegister, setCustomerToRegister, setIndivCustomerToRegister } from "./customerToRegister.actions";
 
 export const customerToRegisterReducer = createReducer<CustomerToRegisterState>(
     initialCustomerToRegisterState,
@@ -55,6 +55,17 @@ export const customerToRegisterReducer = createReducer<CustomerToRegisterState>(
       CorporateCustomerToRegister: action.corporateCustomerModel,
     };
   }
+),
+
+on(
+  setCatalogToRegister, 
+(currentState, action) => {
+  console.log(action)
+  return {
+    ...currentState,
+    CatalogToRegister: action.catalogRegisterModel,
+  };
+}
 ),
     
     // on(deleteTokenUserModel, (currentState) => {

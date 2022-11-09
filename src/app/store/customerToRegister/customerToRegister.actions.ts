@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 
 import { Action } from "rxjs/internal/scheduler/Action";
+import { Catalog } from "src/app/model/catalog";
 import { CorporateCustomer } from "src/app/model/corporateCustomer";
 import { Customer } from "src/app/model/customer";
 import { CustomerToRegisterState } from "./customerToRegister.state";
@@ -23,6 +24,12 @@ export const setCustomerToRegister = createAction(
     '[CorporateCustomerToRegister] Set Corporate Customer To Register Model',
     props<{ corporateCustomerModel : CorporateCustomer }>() 
   );
+
+  export const setCatalogToRegister = createAction(
+    '[CatalogToRegister] Set Corporate Customer To Register Model',
+    props<{ catalogRegisterModel : Catalog }>() 
+  );
+  
   
 // //   export const deleteTokenUserModel = createAction(
 // //     '[Auth] Delete Token User Model'

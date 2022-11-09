@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AssignCatalogComponent } from './pages/assign-catalog/assign-catalog.component';
 import { CreateCustomerComponent } from './pages/create-customer/create-customer.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { CustomerDetailComponent } from './pages/customer-detail/customer-detail.component';
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path:'customers', component: CustomerComponent, canActivate:[LoginGuard]},
   {path: 'customerDetail/:id', component: CustomerDetailComponent, canActivate:[LoginGuard]},
   {path: 'createCustomer', component: CreateCustomerComponent, canActivate:[LoginGuard]},
+  {path: 'catalog', component: AssignCatalogComponent, canActivate:[LoginGuard]}
+
 
 ];
 

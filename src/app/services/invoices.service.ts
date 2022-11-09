@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class InvoicesService {
 
-  private controllerUrl = `${environment.apiUrl}/subscriptions`;
+  private controllerUrl = `${environment.apiUrl}/invoices`;
 
   constructor(private httpClient:HttpClient) { }
 

@@ -33,7 +33,7 @@
       <span class="input-group-text" id="inputGroup-sizing-default">National Id</span>
       <input type="text" class="form-control" formControlName="nationalIdentity" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
     </div>
-      <button type="button" class="btn btn-outline-primary" (click)="addIndivCustomer()">Next</button>
+      <button type="button" class="btn btn-outline-primary" (click)="addIndivCustomer()" routerLink="/catalog">Next</button>
   </form>
   </div>
 </ng-container>
@@ -55,7 +55,7 @@
       <span class="input-group-text" id="inputGroup-sizing-default">Tax Number</span>
       <input type="text" class="form-control" formControlName="taxNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
     </div>
-      <button type="button" class="btn btn-outline-primary" (click)="addCorpoCustomer()">Next</button>
+      <button type="button" class="btn btn-outline-primary" (click)="addCorpoCustomer()" routerLink="/catalog">Next</button>
     </form>
   </div>
 </ng-container>
