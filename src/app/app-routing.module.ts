@@ -9,6 +9,7 @@ import { ListViewComponent } from './components/list-view/list-view.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { NgModule } from '@angular/core';
+import { SummaryComponent } from './pages/summary/summary.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'customers', component: CustomerComponent, canActivate:[LoginGuard]},
   {path: 'customerDetail/:id', component: CustomerDetailComponent, canActivate:[LoginGuard]},
   {path: 'createCustomer', component: CreateCustomerComponent, canActivate:[LoginGuard]},
-  {path: 'catalog', component: AssignCatalogComponent, canActivate:[LoginGuard]}
+  {path: 'catalog', component: AssignCatalogComponent, canActivate:[LoginGuard]},
+  {path: 'summary', component: SummaryComponent, canActivate:[LoginGuard]}
 
 
 ];

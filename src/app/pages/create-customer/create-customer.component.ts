@@ -21,29 +21,22 @@ import { setIndivCustomerToRegister } from 'src/app/store/customerToRegister/cus
 })
 export class CreateCustomerComponent implements OnInit {
   [x: string]: any;
-  customerModel$ !: Observable<Customer | null>;;
-  individualCustomerModel$ !: Observable<IndividualCustomer | null>;
-  corporateCustomerModel$ !: Observable<CorporateCustomer | null>;
+  
+  
   // createCustomerForm !: FormGroup;
-  customer!:Customer;
-  individualCustomer!:IndividualCustomer;
-  corporateCustomer!:CorporateCustomer;
+  customer!:Customer | null;
+  individualCustomer!:IndividualCustomer | null;
+  corporateCustomer!:CorporateCustomer | null;
   createIndividualCustomer!: FormGroup;
   createCorporateCustomer!: FormGroup;
   selectCustomerType !: boolean;
   error : string = '';
 
-
-  
-  
- 
-
-
   constructor(private customerService : CustomerService,private individualService: IndividualCustomerService,
-    private corporateService: CorporateCustomerService, private formBuilder : FormBuilder, private store: Store<AppStoreState> ) {
-      this.customerModel$ = this.store.select((s)=> s.customerToRegister.customer),
-      this.individualCustomerModel$ = this.store.select((s)=> s.customerToRegister.individualCustomer),
-      this.corporateCustomerModel$ = this.store.select((s)=> s.customerToRegister.corporateCustomer)
+    private corporateService: CorporateCustomerService, private formBuilder : FormBuilder,  ) {
+      
+      
+      
      }
 
   ngOnInit(): void {
@@ -63,6 +56,16 @@ export class CreateCustomerComponent implements OnInit {
     this.createIndividualCustomerForm();
     this.createCorporateCustomerForm();
   }
+
+  fetchData(){
+    this.individualService.individualCustomerModel$.subscribe((response)=>{
+      this.individualCustomer = response;
+    })
+    this.corporateService.corporateCustomerModel$.subscribe((response)=>{
+      this.corporateCustomer = response;
+    })
+  }
+
 
   changeCustomerType(type: boolean){
     this.selectCustomerType=type;
@@ -86,39 +89,12 @@ export class CreateCustomerComponent implements OnInit {
     });
   }
 
-  addCustomer():Observable<Customer>| void{
-    // const response = this.customerService.add(this.customers).subscribe((response) => { 
-    //   this.customers = response;
-    // }); 
-
-    const registeredCustomer : Customer={
-      id:null,
-      customerNumber: Math.floor((Math.random() * 99999999) + 10000000),
-      // ...this.createIndividualCustomer.value
-    };
-
-    this.customerService.add(registeredCustomer).subscribe({
-      next:(response) => {
-        console.info(response.id);
-        return response;
-      },
-      error: (err) =>{
-        console.log(err);
-        this.error= err.statusText;
-      },
-      complete:() =>{
-        if(this.error) this.error='';
-      },
-    });
-  }
-
+  
   addIndivCustomer() { 
     if (!this.createIndividualCustomer.valid) return;
-    const responseCustomer=this.addCustomer();
+    // const responseCustomer=this.addCustomer();
 
-    this.store.dispatch(
-      setIndivCustomerToRegister({ individualCustomerModel: this.createIndividualCustomer.value })
-    );
+    this.individualService.saveToStore(this.createIndividualCustomer.value)
     
     // const registeredIndividual : IndividualCustomer={
     //   ...this.createIndividualCustomer.value,
@@ -147,11 +123,9 @@ export class CreateCustomerComponent implements OnInit {
 
   addCorpoCustomer() {
     if (!this.createCorporateCustomer.valid) return;
-    const responseCustomer=this.addCustomer();
+    // const responseCustomer=this.addCustomer();
 
-    this.store.dispatch(
-      setCorpoCustomerToRegister({ corporateCustomerModel: this.createIndividualCustomer.value })
-    );
+    this.corporateService.saveToStore(this.createCorporateCustomer.value)
   //   const response = this.corporateService.add(this.corporateCustomers).subscribe((response) => { 
   //     this.corporateCustomers = response;
   //   }); 

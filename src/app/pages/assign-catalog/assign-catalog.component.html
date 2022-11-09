@@ -1,7 +1,8 @@
 <ul *ngIf="catalog">
     <ng-template ngFor let-item [ngForOf]="catalog"  >
       <li >{{item.id}} - {{ item.name }} : {{item.price}}</li>   
-        <button class="btn btn-outline-info btn-sm" (click)="selectCatalog(item)" >Add This Catalog</button>
+        <button class="btn btn-outline-info btn-sm" (click)="selectCatalog(item)">Add This Catalog</button>
     </ng-template>
   </ul>
+  <button type="button" class="btn btn-success" (click)="goNext()">Next</button>
 

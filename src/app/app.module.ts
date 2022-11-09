@@ -25,9 +25,9 @@ import { NgModule } from '@angular/core';
 import { SplitPipe } from './pipes/split.pipe';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { SummaryComponent } from './pages/summary/summary.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './interceptors/token.interceptor';
-import { SummaryComponent } from './pages/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { SummaryComponent } from './pages/summary/summary.component';
     CustomerDetailComponent,
     CreateCustomerComponent,
     AssignCatalogComponent,
-    SummaryComponent
+    SummaryComponent,
   ],
   
   imports: [

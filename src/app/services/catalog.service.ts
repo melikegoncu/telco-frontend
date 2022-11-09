@@ -1,16 +1,21 @@
+import { AppStoreState } from '../store/app.state';
 import { Catalog } from '../model/catalog';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
+import { setCatalogToRegister } from '../store/customerToRegister/customerToRegister.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogService {
+  catalogRegisterModel$ !:Observable<Catalog | null>
   controllerUrl = `${environment.apiUrl}/catalog`;
 
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient:HttpClient,private store : Store<AppStoreState>) {
+    this.catalogRegisterModel$ = this.store.select((s)=> s.customerToRegister.catalog )
   }
 
   get(): Observable<Catalog[]> {
@@ -27,5 +32,11 @@ export class CatalogService {
 
   delete(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.controllerUrl}/${id}`);
+  }
+
+  saveToStore(catalog : Catalog){
+    this.store.dispatch(
+      setCatalogToRegister({ catalogRegisterModel : catalog })
+    );
   }
 }

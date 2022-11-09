@@ -1,17 +1,22 @@
+import { AppStoreState } from '../store/app.state';
 import { Customer } from '../model/customer';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  customerModel$ !: Observable<Customer | null>;
+
     // private httpClient:HttpClient;
     private controllerUrl = `${environment.apiUrl}/customers`;
 
-    constructor(private httpClient:HttpClient) {
+    constructor(private httpClient:HttpClient,private store: Store<AppStoreState>) {
+      this.customerModel$ = this.store.select((s)=> s.customerToRegister.customer)
       // this.httpClient=httpClient;
      }
   

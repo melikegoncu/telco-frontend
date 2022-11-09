@@ -5,6 +5,7 @@ import { AppStoreState } from 'src/app/store/app.state';
 import { Catalog } from 'src/app/model/catalog';
 import { CatalogService } from 'src/app/services/catalog.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { Services } from 'src/app/model/services';
 import { ServicesService } from 'src/app/services/services.service';
 import { Store } from '@ngrx/store';
@@ -15,15 +16,15 @@ import { setCatalogToRegister } from 'src/app/store/customerToRegister/customerT
   styleUrls: ['./assign-catalog.component.css']
 })
 export class AssignCatalogComponent implements OnInit {
-  catalogRegisterModel$ !:Observable<Catalog | null>
+  
   catalog !: Catalog[];
   selectedCatalog !: Catalog;
   // service !: Services[]
   
   // catalogForm !: FormGroup
   
-  constructor(private store : Store<AppStoreState>, private catalogService : CatalogService, private serviceService:ServicesService) {
-    this.catalogRegisterModel$ = this.store.select((s)=> s.customerToRegister.catalog )
+  constructor(private catalogService : CatalogService, private serviceService:ServicesService, private router:Router) {
+    
    }
 
   ngOnInit(): void {
@@ -52,9 +53,14 @@ export class AssignCatalogComponent implements OnInit {
   }
 
   saveState() {
-    this.store.dispatch(
-      setCatalogToRegister({ catalogRegisterModel: this.selectedCatalog })
-    );
+    this.catalogService.saveToStore(this.selectedCatalog)
+    // this.store.dispatch(
+    //   setCatalogToRegister({ catalogRegisterModel: this.selectedCatalog })
+    // );
+  }
+
+  goNext(){
+    this.router.navigateByUrl('/summary')
   }
 
 }
