@@ -46,45 +46,49 @@ export class SummaryComponent implements OnInit {
       if(response){
         this.individualCustomer = response;
         this.customerType = true;
+        console.log(response)
       }
     }) 
     this.corporateService.corporateCustomerModel$.subscribe((response)=>{
       if(response){
         this.corporateCustomer = response;
         this.customerType = false;
+        console.log(response)
       }
     })
     this.catalogService.catalogRegisterModel$.subscribe((response)=>{
       this.catalog = response;
+      console.log(response)
     })
   }
 
-  addCustomer(idd:number|null):Observable<Customer>| void{
+  // addCustomer():Observable<Customer>| void{
     // const response = this.customerService.add(this.customers).subscribe((response) => { 
     //   this.customers = response;
     // }); 
 
-    const registeredCustomer : Customer={
-      id:null,
-      customerNumber: Math.floor((Math.random() * 99999999) + 10000000),
+    // const registeredCustomer : Customer={
+    //   id:null,
+    //   customerNumber: Math.floor((Math.random() * 99999999) + 10000000),
       // ...this.createIndividualCustomer.value
-    };
-    this.customerService.add(registeredCustomer).subscribe({
-      next:(response) => {
-        console.info(response.id);
-        return response;
-      },
-      error: (err) =>{
-        console.log(err);
-        this.error= err.statusText;
-      },
-      complete:() =>{
-        if(this.error) this.error='';
-      },
-    });
-  }
+  //   };
+  //   this.customerService.add(registeredCustomer).subscribe({
+  //     next:(response) => {
+  //       console.info(response.id);
+  //       return response;
+  //     },
+  //     error: (err) =>{
+  //       console.log(err);
+  //       this.error= err.statusText;
+  //     },
+  //     complete:() =>{
+  //       if(this.error) this.error='';
+  //     },
+  //   });
+  // }
 
   addIndivCustomer() { 
+    this.customerType = true;
     const newCustomer: Customer = {
       id : null,
       customerNumber: Math.floor(10000000 + Math.random() * 90000000)
@@ -111,6 +115,7 @@ export class SummaryComponent implements OnInit {
       }
 
   addCorpoCustomer() {
+    this.customerType = false;
     const newCustomer: Customer = {
       id : null,
       customerNumber: Math.floor(10000000 + Math.random() * 90000000)

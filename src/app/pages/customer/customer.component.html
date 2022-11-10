@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,17 +14,66 @@
 <ul class="list-group">
     <ng-template ngFor let-item [ngForOf]="individualCustomers | filter:searchText "  >
       <li class="list-group-item">
-      {{item.customerId}} - {{ item.firstName }} {{item.lastName}}</li>
-      <button type="button" class="btn btn-outline-info btn-sm" [routerLink]="'/customerDetail/' + item.customerId">Detay </button>
+      {{item.customerId}} - {{ item.firstName }} {{item.lastName}}
+      <button type="button" class="btn btn-outline-info btn-sm float-end" [routerLink]="'/customerDetail/' + item.customerId">Detay </button>
+    </li>
     </ng-template>
     <ng-template ngFor let-item [ngForOf]="corporateCustomers  | filter:searchText "  >
       <li class="list-group-item">
-      {{ item.customerId }} - {{ item.companyName}}</li>
-      <button type="button" class="btn btn-outline-info btn-sm" [routerLink]="'/customerDetail/' + item.customerId">Detay </button>
+      {{ item.customerId }} - {{ item.companyName}}
+      <button type="button" class="btn btn-outline-info btn-sm float-end" [routerLink]="'/customerDetail/' + item.customerId">Detay </button>
+    </li>
     </ng-template>
   </ul>
 
   <div>
     <button routerLink="/createCustomer" class="btn btn-success btn-sm" type="button">Add</button>
   </div>
-</body>
+</body> -->
+
+<!-- <div class="container">
+  <button routerLink="/createCustomer" class="btn btn-success btn-lg float-end" type="button">Add</button>
+</div>
+
+<br> <br> -->
+
+<div class="container">
+  <h1>Individual Customers</h1>
+<div class="row" >
+  <ng-template ngFor let-item [ngForOf]="individualCustomers | filter:searchText "  >
+  <div class="col-lg-4">
+  
+    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+    <h2 class="fw-normal">{{ item.firstName }} {{item.lastName}}</h2>
+    <p><button type="button" class="btn btn-outline-success" [routerLink]="'/customerDetail/' + item.customerId">View Details </button></p>
+ 
+  </div><!-- /.col-lg-4 -->
+</ng-template>
+</div>
+</div>
+
+<br> <br>
+
+<div class="container">
+  <h1>Corporate Customers</h1>
+  <div class="row" >
+    <ng-template ngFor let-item [ngForOf]="corporateCustomers | filter:searchText "  >
+    <div class="col-lg-4">
+    
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+  
+      <h2 class="fw-normal">{{ item.companyName}}</h2>
+      <p><button type="button" class="btn btn-outline-success" [routerLink]="'/customerDetail/' + item.customerId">View Details </button></p>
+   
+    </div><!-- /.col-lg-4 -->
+  </ng-template>
+  </div>
+  <br> <br>
+  <div class="d-grid gap-2">
+    <button routerLink="/createCustomer" class="btn btn-success btn-lg" type="button">Add Customer</button>
+  </div>
+  </div>
+
+
+

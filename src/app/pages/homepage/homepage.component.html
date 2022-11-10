@@ -8,6 +8,8 @@
 </head>
 <body class="p-3 m-0 border-0 bd-example">
 
+  <div class="container">
+  <div class="left-div">
 <ul class="list-group" *ngIf="services">
   <ng-template ngFor let-item [ngForOf]="services"  >
     <li class="list-group-item">
@@ -20,9 +22,16 @@
     </ng-container>
   </ng-template>
 </ul>
+</div>
+</div>
 
 <!--Reactive Form-->
-<ng-container *ngIf="changeForm; else elseTitle">
+<!-- <div class="left"> -->
+
+
+<div class="container">
+  <div class="right-div">
+  <ng-container *ngIf="changeForm; else elseTitle">
   <h1>Form - Update - {{this.servicesIdToUpdate}}</h1>
 </ng-container>
 
@@ -46,14 +55,18 @@
   </ng-template>
 </div>
 
+<!-- </div> -->
 
 
 <!-- ngModel From-->
-<h1>Sil: {{serviceIdToDelete}}</h1>
+<h1>Delete: {{serviceIdToDelete}}</h1>
 <div>
-  <input type="text" placeholder="id" [(ngModel)]="serviceIdToDelete">
-  <button (click)="delete()" class="btn btn-danger btn-sm" type="button">Sil</button>
+  <input size="15" type="text" class="form-control" aria-label="Recipient's username with two button addons" placeholder="id" [(ngModel)]="serviceIdToDelete">
+  <!-- <input type="text" placeholder="id" [(ngModel)]="serviceIdToDelete"> -->
+  <button (click)="delete()" class="btn btn-danger btn-sm" type="button">Delete</button>
 
+</div>
+</div>
 </div>
 
 </body>
