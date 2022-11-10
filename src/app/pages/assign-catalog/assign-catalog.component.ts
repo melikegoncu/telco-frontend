@@ -31,6 +31,12 @@ export class AssignCatalogComponent implements OnInit {
     this.getAllCatalog()
   }
 
+  // fetchData(){
+  //   this.catalogService.catalogRegisterModel$.subscribe((response)=>{
+  //     this.selectedCatalog = response;
+  //   })
+  // }
+
   selectCatalog(catalog:Catalog){
      this.selectedCatalog = catalog
      this.saveState();

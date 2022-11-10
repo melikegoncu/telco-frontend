@@ -34,11 +34,16 @@ export class SummaryComponent implements OnInit {
     private invoiceService:InvoicesService,
     private router:Router,
     private store: Store<AppStoreState>) {
-      // this.state = store.select('customerToRegister');
+      this.corporateService.corporateCustomerModel$ = this.store.select((s)=> s.customerToRegister.corporateCustomer),
+      this.individualService.individualCustomerModel$ = this.store.select((s)=> s.customerToRegister.individualCustomer),
+      this.catalogService.catalogRegisterModel$ = this.store.select((s)=> s.customerToRegister.catalog)  
      }
 
   ngOnInit(): void {
     this.getDataFromStore();
+    this.individualService.individualCustomerModel$.subscribe(response=>{
+       console.log("Statedeki customer: " , response );
+    })
   }
 
   getDataFromStore(){
@@ -46,23 +51,21 @@ export class SummaryComponent implements OnInit {
       if(response){
         this.individualCustomer = response;
         this.customerType = true;
-        console.log(response)
       }
     }) 
     this.corporateService.corporateCustomerModel$.subscribe((response)=>{
       if(response){
         this.corporateCustomer = response;
         this.customerType = false;
-        console.log(response)
       }
     })
     this.catalogService.catalogRegisterModel$.subscribe((response)=>{
       this.catalog = response;
-      console.log(response)
     })
+    console.log(this.customerType + "burası çalıştı")
   }
-
-  // addCustomer():Observable<Customer>| void{
+  
+ // addCustomer():Observable<Customer>| void{
     // const response = this.customerService.add(this.customers).subscribe((response) => { 
     //   this.customers = response;
     // }); 
@@ -87,6 +90,8 @@ export class SummaryComponent implements OnInit {
   //   });
   // }
 
+
+  //---------v
   addIndivCustomer() { 
     this.customerType = true;
     const newCustomer: Customer = {
@@ -113,7 +118,7 @@ export class SummaryComponent implements OnInit {
   }
     });
       }
-
+//----------vn
   addCorpoCustomer() {
     this.customerType = false;
     const newCustomer: Customer = {
@@ -134,16 +139,39 @@ export class SummaryComponent implements OnInit {
               this.catalogService.add(this.catalog)
             },
             complete:() =>{
+              this.customerService.getCustomer();
               this.router.navigateByUrl('/customers')
+              
             }
           });
   }
     });
+    
+//////-------n
+    
     // const responseCustomer=this.addCustomer();
   //   const response = this.corporateService.add(this.corporateCustomers).subscribe((response) => { 
   //     this.corporateCustomers = response;
   //   }); 
   //   this.corporateCustomers.customerId == this.customers.id
-  }
+ 
+  //--------v
+}
+//------n
+
+ addCatalog(){
+  // const catalog : Catalog={
+  //   ...this.categoryAddForm.value
+  // };
+
+  this.catalogService.add(this.catalog).subscribe({
+    next:(response) => {
+      console.info(response);
+    },
+    complete:() =>{
+      if(this.error) this.error='';
+    },
+  });
+ }
 
 }

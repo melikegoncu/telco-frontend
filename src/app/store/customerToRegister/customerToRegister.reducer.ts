@@ -41,7 +41,7 @@ export const customerToRegisterReducer = createReducer<CustomerToRegisterState>(
       console.log(action)
       return {
         ...currentState,
-        IndividualCustomerToRegister: action.individualCustomerModel,
+        individualCustomer: action.individualCustomerModel,
       };
     }
   ),
@@ -52,7 +52,7 @@ export const customerToRegisterReducer = createReducer<CustomerToRegisterState>(
     console.log(action)
     return {
       ...currentState,
-      CorporateCustomerToRegister: action.corporateCustomerModel,
+      corporateCustomer: action.corporateCustomerModel,
     };
   }
 ),
@@ -63,7 +63,7 @@ on(
   console.log(action)
   return {
     ...currentState,
-    CatalogToRegister: action.catalogRegisterModel,
+    catalog: action.catalogRegisterModel,
   };
 }
 ),

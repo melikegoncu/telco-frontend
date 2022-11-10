@@ -40,15 +40,15 @@ export class CreateCustomerComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    // this.customerModel$.subscribe((response) => {
+    // this.customerService.customerModel$.subscribe((response) => {
     //   if (response != null) this.customer = response;
-    //   this.addCustomer();
+      // this.addCustomer();
     // });
-    // this.individualCustomerModel$.subscribe((response) => {
+    // this.individualService.individualCustomerModel$.subscribe((response) => {
     //   if (response != null) this.individualCustomer = response;
     //   this.createIndividualCustomerForm();
     // });
-    // this.corporateCustomerModel$.subscribe((response) => {
+    // this.corporateService.corporateCustomerModel$.subscribe((response) => {
     //   if (response != null) this.corporateCustomer = response;
     //   this.createCorporateCustomerForm();
     // });
@@ -91,6 +91,7 @@ export class CreateCustomerComponent implements OnInit {
 
   
   addIndivCustomer() { 
+    this.selectCustomerType = true ;
     if (!this.createIndividualCustomer.valid) return;
     // const responseCustomer=this.addCustomer();
 
@@ -122,6 +123,7 @@ export class CreateCustomerComponent implements OnInit {
 
 
   addCorpoCustomer() {
+    this.selectCustomerType = false ;
     if (!this.createCorporateCustomer.valid) return;
     // const responseCustomer=this.addCustomer();
 

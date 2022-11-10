@@ -3,6 +3,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppStoreState } from './store/app.state';
 import { AssignCatalogComponent } from './pages/assign-catalog/assign-catalog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +29,7 @@ import { StoreModule } from '@ngrx/store';
 import { SummaryComponent } from './pages/summary/summary.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { appReducers } from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
         tokenGetter: () => {return localStorage.getItem('token');}
       },
     }),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot<AppStoreState>(appReducers),
     StoreDevtoolsModule.instrument({
       autoPause: false,
     }),

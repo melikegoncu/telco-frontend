@@ -8,12 +8,13 @@ export interface CustomerToRegisterState {
     individualCustomer:IndividualCustomer | null;
     corporateCustomer:CorporateCustomer | null;
     catalog:Catalog | null;
-
+    // customerType:number
 }
 
 export const initialCustomerToRegisterState: CustomerToRegisterState = {
     customer: null,
     individualCustomer:null,
     corporateCustomer: null,
-    catalog:null
+    catalog:null,
+    // customerType:0
   };
