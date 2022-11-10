@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { LoginServiceService } from '../services/login.service';
-import { ToastrService } from 'ngx-toastr';
 
+import { Injectable } from '@angular/core';
+import { LoginServiceService } from '../services/login.service';
+import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class LoginGuard implements CanActivate {
     
       if(this.loginService.isAuthenticated)
         return true;
-      this.toastr.error('Bu sayfaya erişmek için giriş yapmalısınız.');
+      this.toastr.error('You must login before accessing this page');
       this.router.navigateByUrl('/login');
       return false;
   }
