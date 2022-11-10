@@ -1,11 +1,12 @@
-import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { LoginModel } from 'src/app/model/loginModel';
+import { LoginServiceService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { LoginModel } from 'src/app/model/loginModel';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { LoginServiceService } from 'src/app/services/login.service';
+import { Token } from '@angular/compiler';
 
 @Component({
   templateUrl: './login.component.html',
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl("/services");
         },
         error: (err) =>{
-          this.toastr.error(err['message']);
+          this.toastr.error(err["Please fill the form correctly"]);
           this.error= err.statusText;
         },
         complete:() =>{

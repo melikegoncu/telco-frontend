@@ -26,6 +26,7 @@ export class SummaryComponent implements OnInit {
   catalog!:any;
   state!: Observable<AppStoreState>;
   error:string='';  
+  catalogRegisterModel !: any;
 
   constructor(private customerService : CustomerService,
     private individualService:IndividualCustomerService,
@@ -43,6 +44,10 @@ export class SummaryComponent implements OnInit {
     this.getDataFromStore();
     this.individualService.individualCustomerModel$.subscribe(response=>{
        console.log("Statedeki customer: " , response );
+    })
+
+    this.catalogService.catalogRegisterModel$.subscribe((res) => {
+      if(res != null) this.catalogRegisterModel = res;
     })
   }
 

@@ -18,7 +18,8 @@ import { setCatalogToRegister } from 'src/app/store/customerToRegister/customerT
 export class AssignCatalogComponent implements OnInit {
   
   catalog !: Catalog[];
-  selectedCatalog !: Catalog;
+  selectedCatalog:any=[];
+  //catalagAdd !: Catalog;
   // service !: Services[]
   
   // catalogForm !: FormGroup
@@ -38,8 +39,11 @@ export class AssignCatalogComponent implements OnInit {
   // }
 
   selectCatalog(catalog:Catalog){
-     this.selectedCatalog = catalog
-     this.saveState();
+     this.selectedCatalog.push(catalog);
+    //  this.catalagAdd = Object.assign(this.selectedCatalog);
+    //  console.log("----",this.catalagAdd);
+     
+      console.log(this.selectedCatalog)
   }
 
   getAllCatalog() {
@@ -48,6 +52,7 @@ export class AssignCatalogComponent implements OnInit {
     // })
     const response = this.catalogService.get().subscribe((response) => { 
       this.catalog = response;
+      
       console.log(response)
     }); 
   }
@@ -55,18 +60,19 @@ export class AssignCatalogComponent implements OnInit {
 
   checkboxForm(){
     // this.catalogForm = this.formGroup;
-    this.saveState();
+    //this.saveState();
   }
 
-  saveState() {
-    this.catalogService.saveToStore(this.selectedCatalog)
+  saveState(catalog:Catalog) {
+    this.catalogService.saveToStore(catalog);
     // this.store.dispatch(
     //   setCatalogToRegister({ catalogRegisterModel: this.selectedCatalog })
     // );
   }
 
   goNext(){
-    this.router.navigateByUrl('/summary')
+    this.saveState(this.selectedCatalog);
+    this.router.navigateByUrl('/summary');
   }
 
 }

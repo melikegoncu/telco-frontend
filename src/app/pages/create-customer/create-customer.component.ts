@@ -10,7 +10,9 @@ import { CustomerToRegisterState } from 'src/app/store/customerToRegister/custom
 import { IndividualCustomer } from 'src/app/model/individualCustomer';
 import { IndividualCustomerService } from 'src/app/services/individual-customer.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
 import { setCorpoCustomerToRegister } from 'src/app/store/customerToRegister/customerToRegister.actions';
 import { setCustomerToRegister } from 'src/app/store/customerToRegister/customerToRegister.actions';
 import { setIndivCustomerToRegister } from 'src/app/store/customerToRegister/customerToRegister.actions';
@@ -33,7 +35,7 @@ export class CreateCustomerComponent implements OnInit {
   error : string = '';
 
   constructor(private customerService : CustomerService,private individualService: IndividualCustomerService,
-    private corporateService: CorporateCustomerService, private formBuilder : FormBuilder,  ) {
+    private corporateService: CorporateCustomerService, private formBuilder : FormBuilder, private toastr : ToastrService, private router : Router ) {
       
       
       
@@ -91,11 +93,16 @@ export class CreateCustomerComponent implements OnInit {
 
   
   addIndivCustomer() { 
-    this.selectCustomerType = true ;
-    if (!this.createIndividualCustomer.valid) return;
+    if (!this.createIndividualCustomer.valid){
+      this.toastr.error("Please fill the form correctly");
+     return } 
     // const responseCustomer=this.addCustomer();
 
+    
+
     this.individualService.saveToStore(this.createIndividualCustomer.value)
+
+    this.router.navigateByUrl('/catalog')
     
     // const registeredIndividual : IndividualCustomer={
     //   ...this.createIndividualCustomer.value,
@@ -123,11 +130,15 @@ export class CreateCustomerComponent implements OnInit {
 
 
   addCorpoCustomer() {
-    this.selectCustomerType = false ;
-    if (!this.createCorporateCustomer.valid) return;
+    if (!this.createCorporateCustomer.valid){
+      this.toastr.error("Please fill the form correctly");
+     return } 
     // const responseCustomer=this.addCustomer();
 
+    
     this.corporateService.saveToStore(this.createCorporateCustomer.value)
+    
+    this.router.navigateByUrl('/catalog')
   //   const response = this.corporateService.add(this.corporateCustomers).subscribe((response) => { 
   //     this.corporateCustomers = response;
   //   }); 
