@@ -1,7 +1,7 @@
 <body class="p-3 m-0 border-0 bd-example"> 
 
   <div class="container">
-  <h1 class="pb-2 border-bottom">Select Customer Type</h1>
+  <h2 class="pb-2 border-bottom">Select Customer Type</h2>
 
     <div class="form-check" (click)="changeCustomerType(true)">
         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -19,7 +19,7 @@
       <br>  <br>
 
     <ng-container *ngIf="!selectCustomerType">
-    <h1>Create Individual Customer</h1>
+    <h3>Create Individual Customer</h3>
     <div class="input-group mb-3">
   <form [formGroup]="createIndividualCustomer" >
     <!-- <div class="input-group mb-3">
@@ -38,14 +38,14 @@
       <span class="input-group-text" id="inputGroup-sizing-default">National Id</span>
       <input type="text" class="form-control" formControlName="nationalIdentity" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
     </div>
-      <button type="button" class="btn btn-outline-primary" (click)="addIndivCustomer()">Next</button>
+      <button type="button" class="btn btn-success" (click)="addIndivCustomer()">Next</button>
   </form>
   </div>
 </ng-container>
 
   <!-- ------- -->
   <ng-container *ngIf="selectCustomerType">
-  <h1>Create Corporate Customer</h1>
+  <h3>Create Corporate Customer</h3>
   <div class="input-group mb-3">
   <form [formGroup]="createCorporateCustomer" >
     <!-- <div class="input-group mb-3">
@@ -60,7 +60,7 @@
       <span class="input-group-text" id="inputGroup-sizing-default">Tax Number</span>
       <input type="text" class="form-control" formControlName="taxNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
     </div>
-      <button type="button" class="btn btn-outline-primary" (click)="addCorpoCustomer()">Next</button>
+      <button type="button" class="btn btn-success" (click)="addCorpoCustomer()">Next</button>
     </form>
   </div>
 </ng-container>

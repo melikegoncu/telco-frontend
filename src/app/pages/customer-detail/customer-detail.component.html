@@ -8,7 +8,7 @@
   </head>
   
   <body class="p-3 m-0 border-0 bd-example">
-    <ng-template ngFor let-item [ngForOf]="individualCustomer"  > 
+    <!-- <ng-template ngFor let-item [ngForOf]="individualCustomer"  > 
             <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
                 <div class="card-header"> {{ item.firstName }} {{ item.lastName }}</div>
                 <div class="card-body">
@@ -37,4 +37,50 @@
                 </div>
             </ng-template>
           </div>
-  </body>
+  </body> -->
+
+  
+  <div class="container bootstrap snippets bootdeys">
+    <div class="row" >
+        <div class="col-md-4 col-sm-6 content-card" *ngFor="let item of individualCustomer">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                    <div class="content">
+                        <h6 class="category">Individual Customer</h6> <br>
+                        <h4 class="title"><a>{{item.firstName}} {{item.lastName}}</a></h4>
+                        <p class="description">National Identity : {{item.nationalIdentity}}</p>
+                    </div>
+                </div> <!-- end card -->
+            </div>
+        </div>
+
+        <div class="container bootstrap snippets bootdeys">
+          <div class="row" >
+              <div class="col-md-4 col-sm-6 content-card" *ngFor="let item of corporateCustomer">
+                  <div class="card-big-shadow">
+                      <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                          <div class="content">
+                              <h6 class="category">Corporate Customer</h6> <br>
+                              <h4 class="title"><a>{{item.companyName}}</a></h4>
+                              <p class="description">Tax NUmber : {{item.taxNumber}}</p>
+                          </div>
+                      </div> <!-- end card -->
+                  </div>
+              </div>
+
+        <div class="container bootstrap snippets bootdeys">
+          <div class="row">
+              <div class="col-md-4 col-sm-6 content-card" *ngFor="let item of subscription">
+                  <div class="card-big-shadow">
+                      <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
+                          <div class="content" >
+                              <h6 class="category">Subscriptions</h6> <br>
+                              <h4 class="title"><a>Id : {{item.id}}</a></h4>
+                              <p class="description">Date : {{item.dateStarted}}</p>
+                          </div>
+                      </div> <!-- end card -->
+                  </div>
+              </div>
+    
+          </div>
+          </div>
