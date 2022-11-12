@@ -64,8 +64,19 @@ The basic working logic of the project is as follows.Authorized users can list, 
 
 ![image](https://user-images.githubusercontent.com/83363986/201492393-ef36c7aa-dd9f-4af9-b302-1a6fc7f9f352.png)
 
+## Pages
 
 
-
-
+![login](https://user-images.githubusercontent.com/83363986/201494816-23e40c15-9052-45e6-945a-c887cd2731c2.png)
+![home](https://user-images.githubusercontent.com/83363986/201494819-05a08e78-bfec-4728-91d3-a2c5154cc60e.png)
+![customer1](https://user-images.githubusercontent.com/83363986/201494829-9c0a0521-e40a-4ef5-9514-da5a3d5503af.png)
+![customer2](https://user-images.githubusercontent.com/83363986/201494839-395637a5-98cb-4e4b-9762-bace245c69ce.png)
+![addCustomer](https://user-images.githubusercontent.com/83363986/201494841-51dda4cb-bdcc-457b-bf21-0c6096b7fa0b.png)
+![addCustomer2](https://user-images.githubusercontent.com/83363986/201494842-9ce378ce-7d5d-4578-ab31-6377624cb688.png)
+![catalog](https://user-images.githubusercontent.com/83363986/201494846-f6060ce9-6feb-4b9d-bb87-9b790c846e72.png)
+![summary](https://user-images.githubusercontent.com/83363986/201494848-a3591e88-6e78-446d-b716-e60b25497d63.png)
+![summary2](https://user-images.githubusercontent.com/83363986/201494849-8a2bac60-86ea-4055-8b14-ce75d8c71eda.png)
+![details](https://user-images.githubusercontent.com/83363986/201494852-917867a7-f677-4af7-a747-94f9bcce43ae.png)
+![final](https://user-images.githubuse![final2](https://user-images.githubusercontent.com/83363986/201494856-ebb8e5e7-e3b0-497c-8041-8808c480e63c.png)
+rcontent.com/83363986/201494853-dae48f3b-1f91-473f-aad8-1fd47658d8d0.png)
 
