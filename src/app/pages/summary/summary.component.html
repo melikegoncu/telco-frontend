@@ -1,0 +1,166 @@
+
+<!-- < class="container"> -->
+
+<!-- <ng-container *ngIf="customerType == true">
+<div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header"> {{ individualCustomer.firstName }} {{ individualCustomer.lastName }}</div>
+    <div class="card-body">
+    <h5 class="card-title"> </h5>
+    <p class="card-text">{{individualCustomer.nationalIdentity}}</p>
+    <p class="card-text">{{catalog.name}}-{{catalog.price}}</p>
+    </div>
+</div>
+<button type="button" class="btn btn-outline-primary" (click)="addIndivCustomer()" routerLink="/customers">Save Details</button>
+</ng-container> -->
+
+<!-- <ng-container *ngIf="customerType == false">
+    <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header"> {{ corporateCustomer.companyName }} {{ corporateCustomer.taxNumber }}</div>
+        <div class="card-body">
+        <h5 class="card-title"> </h5>
+         <p class="card-text">{{catalog.name}}-{{catalog.price}}</p> 
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-primary" (click)="addCorpoCustomer()" routerLink="/customers">Save Details</button>
+    </ng-container>
+</div> -->
+
+
+
+
+<!-- ------------------- -->
+<!-- <div class="container bootstrap snippets bootdeys">
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
+                    <div class="content">
+                        <h6 class="category">Selected Catalog</h6> <br><br>
+                        <h4 class="title"><a>{{catalog.name}}</a></h4>
+                        <p class="description">Price : {{catalog.price}}</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 content-card" *ngIf="customerType == true">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                    <div class="content">
+                        <h6 class="category">Individual Customer</h6> <br><br>
+                        <h4 class="title"><a>{{individualCustomer.firstName}} {{individualCustomer.lastName}}</a></h4>
+                        <br>
+                        <p class="description">National Identity : {{individualCustomer.nationalIdentity}}</p>
+                    </div>
+                </div> 
+            </div>
+            <button type="button" class="btn btn-outline-primary" (click)="addIndivCustomer()" routerLink="/customers">Save Details</button>
+            
+        
+        </div>
+
+        <div class="col-md-4 col-sm-6 content-card" *ngIf="customerType == false">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
+                    <div class="content">
+                        <h6 class="category">Corporate Customer</h6> <br><br>
+                        <h4 class="title"><a>{{corporateCustomer.companyName}}</a></h4>
+                        <p class="description">Tax Number : {{corporateCustomer.taxNumber}}</p>
+                    </div>
+                </div> 
+            </div>
+            <button type="button" class="btn btn-outline-primary" (click)="addCorpoCustomer()" routerLink="/customers">Save Details</button>
+        </div>
+    </div>
+</div>    -->
+
+<!-- ----------------------- -->
+<br>
+<div class="container">
+    <h3 class="pb-2 border-bottom">Overview</h3>
+  </div>
+  <br> <br>
+
+<div class="container bootstrap snippets bootdeys" *ngIf="customerType == true">
+    <div class="row">
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                    <div class="content">
+                        <h6 class="category">Individual Customer</h6> <br>
+                        <h4 class="title"><a>{{individualCustomer.firstName}} {{individualCustomer.lastName}}</a></h4>
+                        <p class="description">National Identity : {{individualCustomer.nationalIdentity}}</p>
+                    </div>
+                </div> <!-- end card -->
+            </div>
+        </div>
+  
+        <div class="col-md-4 col-sm-6 content-card" *ngFor="let item of catalogRegisterModel">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
+                    <div class="content" >
+                        <h6 class="category">Selected Catalog</h6> <br>
+                        <h4 class="title"><a>{{item.name}}</a></h4>
+                        <p class="description">Price : {{item.price}}</p>
+                    </div>
+                </div> <!-- end card -->
+            </div>
+        </div>
+  
+        <button type="button" class="btn btn-success" (click)="addIndivCustomer()" routerLink="/customers">Save Details</button>
+  
+    </div>
+    </div>
+       
+
+    <div class="container bootstrap snippets bootdeys" *ngIf="customerType == false">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 content-card">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                        <div class="content">
+                            <h6 class="category">Corporate Customer</h6> <br>
+                            <h4 class="title"><a>{{corporateCustomer.companyName}}</a></h4>
+                            <p class="description">Tax Number : {{corporateCustomer.taxNumber}}</p>
+                        </div>
+                    </div> <!-- end card -->
+                </div>
+            </div>
+      
+            <div class="col-md-4 col-sm-6 content-card" *ngFor="let item of catalogRegisterModel">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
+                        <div class="content" >
+                            <h6 class="category">Selected Catalog</h6> <br>
+                            <h4 class="title"><a>{{item.name}}</a></h4>
+                            <p class="description">Price : {{item.price}}</p>
+                        </div>
+                    </div> <!-- end card -->
+                </div>
+            </div>
+      
+            <button type="button" class="btn btn-success" (click)="addCorpoCustomer()" routerLink="/customers">Save Details</button>
+      
+        </div>
+    </div>
+        
+
+
+
+        <!-- <div class="container">
+        <button type="button" class="btn btn-outline-primary" (click)="addCorpoCustomer()" routerLink="/customers">Save Details</button>
+    </div> -->
+
+
+
+    <!-- <main class="px-3">
+        <h1>Cover your page.</h1>
+        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+        </p>
+      </main> -->
+    
+
+    
